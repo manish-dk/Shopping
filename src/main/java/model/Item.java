@@ -6,7 +6,7 @@ import javax.persistence.*;
 public class Item {
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
-	private Long id;
+	private Long itemId;
 	
 	private String name;
 	private double price;
@@ -21,14 +21,14 @@ public class Item {
 	}
 	
 	public String toString() {
-		return String.format("Item[id=%d,name'%s',price=%d]",id,name,price);
+		return String.format("Item[id=%d,name'%s',price=%d]",itemId,name,price);
 	}
 	
 	public Long getId() {
-		return id;
+		return itemId;
 	}
 	public void setId(Long id) {
-		this.id = id;
+		this.itemId = id;
 	}
 	public String getName() {
 		return name;
