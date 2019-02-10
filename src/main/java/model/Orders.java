@@ -7,9 +7,10 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
+import javax.validation.constraints.NotNull;
 
 @Entity
-public class Order {
+public class Orders {
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	private Long orderId;
@@ -17,18 +18,19 @@ public class Order {
 	private String date;
 	private double price;
 	
+	
 	@OneToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "userId")
 	private User user;
 
-	public Order(String date, double price, User user) {
+	public Orders(String date, double price, User user) {
 		super();
 		this.date = date;
 		this.price = price;
 		this.user = user;
 	}
 	
-	public Order() {}
+	public Orders() {}
 
 	public Long getOrderId() {
 		return orderId;

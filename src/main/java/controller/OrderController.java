@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import model.Order;
+import model.Orders;
 import repo.OrderRepo;
 
 @RestController
@@ -23,19 +23,19 @@ public class OrderController {
 	OrderRepo orderRepo;
 	
 	@PostMapping("/order")
-	public Order createOrder(@RequestBody Order order) {
+	public Orders createOrder(@RequestBody Orders order) {
 		orderRepo.save(order);
 		return order;
 	}
 	
 	@GetMapping("/order")
-	public List<Order> getOrders() {
+	public List<Orders> getOrders() {
 		return orderRepo.findAll();
 	}
 	
 	@PutMapping("/order/{id}")
-	public Order updateOrder(@PathVariable long id,@RequestBody Order order) {
-		for(Order o:orderRepo.findAll()) {
+	public Orders updateOrder(@PathVariable long id,@RequestBody Orders order) {
+		for(Orders o:orderRepo.findAll()) {
 			if(o.getOrderId()==order.getOrderId()) {
 				orderRepo.save(order);
 			}
@@ -44,7 +44,7 @@ public class OrderController {
 	}
 	
 	@DeleteMapping("/order/{id}")
-	public Order deleteOrder(@PathVariable long id, Order order) {
+	public Orders deleteOrder(@PathVariable long id, Orders order) {
 		orderRepo.delete(order);
 		return order;
 	}
