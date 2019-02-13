@@ -1,15 +1,21 @@
 package model;
 
+import java.io.Serializable;
+import java.util.Set;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToOne;
 
 @Entity
 public class User {
 	@Id
-	@GeneratedValue(strategy=GenerationType.AUTO)
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	@Column(name="userId")
 	private Long userId;
 	
@@ -19,6 +25,10 @@ public class User {
 	private String email;
 	private String password;
 	
+//	@OneToOne(fetch = FetchType.LAZY, mappedBy= "user", cascade = CascadeType.ALL)
+//	private Orders orders;
+	
+
 	public User(String firstName, String lastName, String address, String email,String password) {
 		super();
 		this.firstName = firstName;
@@ -28,6 +38,23 @@ public class User {
 		this.password = password;
 	}
 	
+	public User() {}
+	
+	public Long getUserId() {
+		return userId;
+	}
+	
+	public void setUserId(Long userId) {
+		this.userId = userId;
+	}
+	
+//	public Orders getOrders() {
+//		return orders;
+//	}
+//	
+//	public void setOrders(Orders orders) {
+//		this.orders = orders;
+//	}
 	public String getPassword() {
 		return password;
 	}
@@ -36,15 +63,6 @@ public class User {
 		this.password = password;
 	}
 
-	public User() {}
-
-	public Long getId() {
-		return userId;
-	}
-
-	public void setId(Long id) {
-		this.userId = id;
-	}
 
 	public String getFirstName() {
 		return firstName;

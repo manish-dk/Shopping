@@ -42,7 +42,7 @@ public class ItemController {
 	@PutMapping("/item/{id}")
 	public Item updateItem(@PathVariable Long id,@RequestBody Item item) {
 		for(Item it:itemRepo.findAll()) {
-			if(it.getId()==item.getId()) {
+			if(it.getItemId()==item.getItemId()) {
 				itemRepo.save(item);
 			}
 		}

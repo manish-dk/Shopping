@@ -36,7 +36,7 @@ public class UserController {
 	@PutMapping("/user/{id}")
 	public User updateUser(@RequestBody User user, @PathVariable long id) {
 		for(User u:userRepo.findAll()) {
-			if(u.getId()==user.getId()) {
+			if(u.getUserId()==user.getUserId()) {
 				userRepo.save(user);
 			}
 		}
